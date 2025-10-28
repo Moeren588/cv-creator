@@ -2,7 +2,8 @@ import { Mail, Globe } from "lucide-react";
 
 export const cvData = {
     name: "Your Name",
-  title: "Senior Front-End Developer",
+    title: "Senior Front-End Developer",
+    location: "Town, County, Country",
 summary:
     "A brief, impactful summary about your professional self. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 
@@ -27,13 +28,6 @@ contact: [
       href: "https://linkedin.com/in/yourprofile",
       icon: <Linkedin size={14} />,
       tags: ["all", "management", "frontend"],
-    },
-    {
-      id: "dribbble",
-      label: "dribbble.com/yourprofile",
-      href: "https://dribbble.com/yourprofile",
-      icon: <Dribbble size={14} />,
-      tags: ["design"],
     },
     // Example with no icon
     {
@@ -91,9 +85,48 @@ contact: [
       tags: ["all", "frontend"],
     },
   ],
-  education: {
-    degree: "B.S. in Computer Science",
-    school: "University of Technology",
-    dates: "2015 - 2019",
-  },
+  education: [
+    {
+      id: 1,
+      degree: "MSc in Computer Science",
+      school: "Masters Institute of Technology",
+      dates: "2019 - 2021",
+      tags: ["all"],
+    },
+    {
+        id: 2,
+        degree: "B.S. in Computer Science",
+        school: "University of Technology",
+        dates: "2015 - 2019",
+        tags: ["all"],
+    },
+  ],
+    languages: [
+    { id: 1, name: "English", level: "Native or Bilingual", tags: ["all"] },
+    { id: 2, name: "Spanish", level: "Elementary", tags: ["all"] },
+  ],
+  awards: [
+    {
+      id: 1,
+      title: "Website design of the year",
+      issuer: "Township Website Committee",
+      tags: ["design", "frontend"],
+    },
+    {
+      id: 2,
+      title: 'Best team performance 2023',
+      issuer: "Tech Corp",
+      tags: ["all"],
+    },
+  ],
+  certifications: [
+    { id: 1, name: "Basic Color Theory", tags: ["design"] },
+    { id: 2, name: "Team Management: From one to many", tags: ["management"] },
+  ],
+  presets: [
+    { tag: "all", label: "All" },
+    { tag: "frontend", label: "Frontend" },
+    { tag: "design", label: "Design" },
+    { tag: "management", label: "Management" },
+  ],
 };
