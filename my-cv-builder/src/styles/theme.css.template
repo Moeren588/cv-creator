@@ -14,6 +14,8 @@
   /* ------------------- */
   :root,
   [data-theme="light"] {
+    --font-body: "Lato", sans-serif;
+    --font-heading: "Playfair Display", serif;
     --background: theme(colors.white);
     --foreground: theme(colors.slate.900);
     --border-color: theme(colors.slate.200);
@@ -49,6 +51,8 @@
   /* --- DARK THEME --- */
   /* ------------------ */
   [data-theme="dark"] {
+    --font-body: "Lato", sans-serif;
+    --font-heading: "Playfair Display", serif;    
     --background: theme(colors.slate.900);
     --foreground: theme(colors.slate.100);
     --border-color: theme(colors.slate.700);

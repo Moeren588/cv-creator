@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
-### ADDED
-- `lucide-react` package
-- the `cv-data-template.js` to data dir
+## [1.0.0] - 29.10.2025
+
+Initial setup of the service with the CV generator working for my own purpose:
+ - Templates for both CSS Theme and CV-data.
+ - Generates a nice CV based on cv-data
+ - Filtering for different types/roles
