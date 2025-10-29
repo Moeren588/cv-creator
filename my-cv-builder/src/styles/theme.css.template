@@ -1,0 +1,82 @@
+/*
+ * THEME TEMPLATE
+ *
+ * Copy this file, rename it to 'theme.css' in the same directory.
+ * 'theme.css' is in .gitignore, so your changes will not be overwritten.
+ *
+ * This file defines all CSS variables for colors, fonts, etc.
+ * It's set up for light (default) and dark modes.
+ */
+
+@layer theme {
+  /* ------------------- */
+  /* --- LIGHT THEME --- */
+  /* ------------------- */
+  :root,
+  [data-theme="light"] {
+    --background: theme(colors.white);
+    --foreground: theme(colors.slate.900);
+    --border-color: theme(colors.slate.200);
+
+    /* Text */
+    --text-color: theme(colors.gray.900);
+    --text-color-subtle: theme(colors.gray.700);
+    --text-accent: theme(colors.blue.600);
+    --text-on-accent: theme(colors.white);
+    --text-color-muted: theme(colors.gray.600);
+    --control-shadow: theme(shadow.sm);
+    --bullet-point-color: theme(colors.gray.900)
+
+    /* Components */
+    --preset-button-bg: theme(colors.gray.100);
+    --preset-button-bg-hover: theme(colors.gray.200);
+    --preset-button-bg-active: theme(colors.blue.600);
+    --preset-button-bg-active-hover: theme(colors.blue.600);
+    --preset-button-text-active: theme(colors.white);
+
+    --skill-tag-bg: theme(colors.sky.100);
+    --skill-tag-text: theme(colors.sky.800);
+
+    --print-button-bg: theme(colors.blue.600);
+    --print-button-bg-hover: theme(colors.blue.700);
+
+    /* Misc */
+    --cv-shadow: theme(shadow.lg);
+    --border-accent: theme(colors.blue.600);
+  }
+
+  /* ------------------ */
+  /* --- DARK THEME --- */
+  /* ------------------ */
+  [data-theme="dark"] {
+    --background: theme(colors.slate.900);
+    --foreground: theme(colors.slate.100);
+    --border-color: theme(colors.slate.700);
+
+    /* Text */
+    --text-color: theme(colors.gray.100);
+    --text-color-subtle: theme(colors.gray.400);
+    --text-accent: theme(colors.blue.400);
+    --text-on-accent: theme(colors.black);
+    --text-color-muted: theme(colors.gray.400);
+    --control-shadow: theme(shadow.sm);
+    --bullet-point-color: theme(colors.gray.100)
+
+    /* Components */
+    --preset-button-bg: theme(colors.slate.800);
+    --preset-button-bg-hover: theme(colors.slate.700);
+    --preset-button-bg-active: theme(colors.blue.500);
+    --preset-button-bg-active-hover: theme(colors.blue.600);
+    --preset-button-text-active: theme(colors.white);
+
+    --skill-tag-bg: theme(colors.sky.900);
+    --skill-tag-text: theme(colors.sky.200);
+
+    --print-button-bg: theme(colors.blue.500);
+    --print-button-bg-hover: theme(colors.blue.600);
+
+    /* Misc */
+    --cv-shadow: theme(shadow.lg); /* You might want a dark-mode shadow */
+    --border-accent: theme(colors.blue.500);
+  }
+}

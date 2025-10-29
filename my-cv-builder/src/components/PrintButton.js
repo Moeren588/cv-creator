@@ -10,7 +10,7 @@ export default function PrintButton() {
     return (
         <button
           onClick={handlePrint}
-          className="rounded-md bg-(--preset-button-color-active) px-4 py-2 text-(--foreground)"
+          className="rounded-md bg-(--print-button-bg) px-4 py-2 text-(--text-on-accent) transition-colors hover:bg-(--print-button-bg-hover)"
         >
           Download as PDF
         </button>

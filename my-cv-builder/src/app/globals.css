@@ -2,24 +2,7 @@
 
 @layer theme, base, components, utilities;
 
-@layer theme {
-
-  :root {
-    --background: theme(colors.slate.100);
-    --foreground: theme(colors.slate.900);
-    --border-color: theme(colors.slate.300);
-
-    --preset-button-color: theme(colors.gray.100);
-    --preset-button-color-active: theme(colors.blue.600);
-
-    --skill-tag-bg: theme(colors.sky.200);
-    --skill-tag-text: theme(colors.sky.800);
-
-    --text-color: theme(colors.gray.900);
-    --text-color-subtle: theme(colors.gray.700);
-  }
-
-}
+@import "../styles/theme.css";
 
 @layer base {
   body{

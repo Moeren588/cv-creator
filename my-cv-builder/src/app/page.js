@@ -20,7 +20,7 @@ function JobEntry({ job }) {
       <p className="text-md font-medium text-(--text-color-subtle)">
         {job.company} | {job.dates}
       </p>
-      <ul className="mt-2 list-inside list-disc space-y-1 text-(--text-color-subtle)">
+      <ul className="mt-2 list-inside list-disc space-y-1 text-(--text-color-subtle) marker:text-(--bullet-point-color)">
         {job.description.map((point, index) => (
           <li key={index}>{point}</li>
         ))}
@@ -34,7 +34,7 @@ function ContactLink({ item }) {
     <a
       href={item.href}
       target="_blank"
-      className="flex items-center gap-1.5"
+      className="flex items-center gap-1.5 hover:text-(--text-accent)"
     >
       {item.icon}
       {item.label}
@@ -44,7 +44,7 @@ function ContactLink({ item }) {
 
 function SectionHeader ({ title }) {
   return(
-    <h2 className="mb-4 border-b-2 border-blue-600 pb-1 text-xl font-bold tracking-wide text-(--foreground)">
+    <h2 className="mb-4 border-b-2 border-(--border-accent) pb-1 text-xl font-bold tracking-wide text-(--text-color)">
       {title}
     </h2>
   )
@@ -57,6 +57,7 @@ export default function CVPage({ searchParams }) {
   const { 
     name, 
     title, 
+    location,
     summary,
     contact,
     skills,
@@ -82,19 +83,19 @@ export default function CVPage({ searchParams }) {
   const filteredCerts = certifications.filter(filterByPreset);
 
   return (
-    <main className="relative mx-auto my-12 max-w-4xl bg-(--background) p-12 shadow-lg print:my-0 print:p-8 print:shadow-none">
+    <main className="relative mx-auto my-12 max-w-4xl bg-(--background) p-12 shadow-(--cv-shadow) print:my-0 print:p-8 print:shadow-none">
       {/* --- CONTROLS (Print Hidden) --- */ }
       <div className="absolute right-12 top-12 flex gap-2 print:hidden">
-        <div className="flex items-center gap-2 rounded-md border border-(--border-color) bg-(--background) p-2 shadow-sm">
+        <div className="flex items-center gap-2 rounded-md border border-(--border-color) bg-(--background) p-2 shadow-(--control-shadow)">
           <span className="text-sm font-medium text-(--text-color-subtle)">Presets:</span>
           {presets.map((p) => (
             <Link
               key={p.tag}
               href={p.tag === "all" ? "/" : `/?preset=${p.tag}`}
-              className= {`rounded px-2.5 py-1 text-sm ${
+              className= {`rounded px-2.5 py-1 text-sm transition-colors ${
                 preset === p.tag
-                  ? "bg-(--preset-button-color-active) text-(--foreground)"
-                  : "bg-(--preset-button-color)"
+                  ? "bg-(--preset-button-bg-active) text-(--preset-button-text-active) hover:bg-(--preset-button-bg-active-hover)"
+                  : "bg-(--preset-button-bg) hover:bg-(--preset-button-bg-hover)"
               }`}
             >
               {p.label}
@@ -104,12 +105,13 @@ export default function CVPage({ searchParams }) {
         <PrintButton />
       </div>
 {/* --- HEADER --- */}
-      <header className="border-b border-gray-200 pb-6 pt-16 print:pt-0">
-        <h1 className="text-5xl font-bold tracking-tight text-gray-900">
+      <header className="border-b border-(--border-color) pb-6 pt-16 print:pt-0">
+        <h1 className="text-5xl font-bold tracking-tight text-(--foreground)">
           {name}
         </h1>
-        <h2 className="text-2xl font-medium text-blue-600">{title}</h2>
-        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
+        <h2 className="text-2xl font-medium text-(--text-accent)">{title}</h2>
+        <p className="mt-1 text-md text-(--text-color-muted)">{location}</p>
+        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-(--text-color-muted)">
           {filteredContact.map((item) => (
             <ContactLink key={item.id} item={item} />
           ))}
@@ -119,14 +121,10 @@ export default function CVPage({ searchParams }) {
       {/* --- MAIN BODY --- */}
       <div className="mt-8 grid grid-cols-3 gap-x-12">
         <section className="col-span-2">
-          <h2 className="mb-4 border-b-2 border-blue-600 pb-1 text-xl font-bold tracking-wide text-gray-800">
-            Summary
-          </h2>
-          <p className="mb-8 text-gray-700">{summary}</p>
+          <SectionHeader title="Summary" />
+          <p className="mb-8 text-(--text-color-subtle)">{summary}</p>
 
-          <h2 className="mb-4 border-b-2 border-blue-600 pb-1 text-xl font-bold tracking-wide text-gray-800">
-            Experience
-          </h2>
+          <SectionHeader title="Experience" />
           {filteredExperience.map((job) => (
             <JobEntry key={job.id} job={job} />
           ))}
@@ -145,13 +143,13 @@ export default function CVPage({ searchParams }) {
           <div className="mb-8 space-y-4">
             {filteredEducation.map((edu) => (
               <div key={edu.id}>
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-lg font-semibold text-(--text-color)">
                   {edu.degree}
                 </h3>
-                <p className="text-md font-medium text-gray-700">
+                <p className="text-md font-medium text-(--text-color-subtle)">
                   {edu.school}
                 </p>
-                <p className="text-sm text-gray-600">{edu.dates}</p>
+                <p className="text-sm text-(--text-color-muted)">{edu.dates}</p>
               </div>
             ))}
           </div>
@@ -159,7 +157,7 @@ export default function CVPage({ searchParams }) {
           {filteredCerts.length > 0 && (
             <>
               <SectionHeader title="Certifications" />
-              <ul className="mb-8 list-inside list-disc space-y-1 text-gray-700">
+              <ul className="mb-8 list-inside list-disc space-y-1 text-(--text-color-muted)">
                 {filteredCerts.map((cert) => (
                   <li key={cert.id}>{cert.name}</li>
                 ))}    
@@ -170,12 +168,12 @@ export default function CVPage({ searchParams }) {
           {filteredAwards.length > 0 && (
             <>
               <SectionHeader title="Honors & Awards" />
-              <ul className="mb-8 list-inside list-disc space-y-1 text-gray-700">
+              <ul className="mb-8 list-inside list-disc space-y-1 text-(--text-xolor-subtle)">
                 {filteredAwards.map((award) => (
                   <li key={award.id}>
                     {award.title}
                     {award.issuer && (
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-(--text-color-muted)">
                         {" "}
                         - {award.issuer}
                       </span>
@@ -189,11 +187,11 @@ export default function CVPage({ searchParams }) {
           {filteredLanguages.length > 0 && (
             <>
               <SectionHeader title="Languages" />
-              <ul className="mb-8 space-y-1 text-gray-700">
+              <ul className="mb-8 space-y-1 text-(--text-color-subtle)">
                 {filteredLanguages.map((lang) => (
                   <li key={lang.id} className="flex justify-between">
                     <span>{lang.name}</span>
-                    <span className="text-gray-500">{lang.level}</span>
+                    <span className="text-(--text-color-muted)">{lang.level}</span>
                   </li>
                 ))}
               </ul>
