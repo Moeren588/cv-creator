@@ -157,9 +157,17 @@ export default function CVPage({ searchParams }) {
           {filteredCerts.length > 0 && (
             <>
               <SectionHeader title="Certifications" />
-              <ul className="mb-8 list-inside list-disc space-y-1 text-(--text-color-muted)">
+              <ul className="mb-8 list-inside list-disc space-y-1 text-(--text-color-subtle)">
                 {filteredCerts.map((cert) => (
-                  <li key={cert.id}>{cert.name}</li>
+                  <li key={cert.id}>
+                    {cert.name}
+                    {cert.issuer && (
+                      <span className="text-sm text-(--text-color-muted)">
+                        {" "}
+                        - {cert.issuer}
+                      </span>
+                    )}
+                  </li>
                 ))}    
               </ul>
             </>
@@ -168,7 +176,7 @@ export default function CVPage({ searchParams }) {
           {filteredAwards.length > 0 && (
             <>
               <SectionHeader title="Honors & Awards" />
-              <ul className="mb-8 list-inside list-disc space-y-1 text-(--text-xolor-subtle)">
+              <ul className="mb-8 list-inside list-disc space-y-1 text-(--text-color-subtle)">
                 {filteredAwards.map((award) => (
                   <li key={award.id}>
                     {award.title}

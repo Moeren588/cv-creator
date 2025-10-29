@@ -109,19 +109,25 @@ contact: [
     {
       id: 1,
       title: "Website design of the year",
-      issuer: "Township Website Committee",
+      issuer: "Township Website Committee", // Optional to include issuer
       tags: ["design", "frontend"],
     },
     {
       id: 2,
       title: 'Best team performance 2023',
-      issuer: "Tech Corp",
       tags: ["all"],
     },
   ],
   certifications: [
-    { id: 1, name: "Basic Color Theory", tags: ["design"] },
-    { id: 2, name: "Team Management: From one to many", tags: ["management"] },
+    {   id: 1, 
+        name: "Basic Color Theory",
+        tags: ["design"] 
+    },
+    {   id: 2, 
+        name: "Team Management: From one to many",
+        issuer: "Township Business Forum", // Optional to include issuer
+        tags: ["management"] 
+    },
   ],
   presets: [
     { tag: "all", label: "All" },
