@@ -7,7 +7,7 @@ import PrintButton from "@/components/PrintButton";
 
 function SkillTag({ skill }) {
   return (
-    <span className="inline-block rounded-full bg-(--skill-tag-bg) px-3 py-1 text-sm font-medium text-(--skill-tag-text)">
+    <span className="inline-block rounded-full bg-(--skill-tag-bg) px-3 text-sm font-medium text-(--skill-tag-text)">
       {skill.name}
     </span>
   );
@@ -20,7 +20,7 @@ function JobEntry({ job }) {
       <p className="text-md font-medium text-(--text-color-subtle)">
         {job.company} | {job.dates}
       </p>
-      <ul className="mt-2 list-inside list-disc space-y-1 text-(--text-color-subtle) marker:text-(--bullet-point-color)">
+      <ul className="mt-2 list-inside list-disc text-(--text-color-subtle) marker:text-(--bullet-point-color)">
         {job.description.map((point, index) => (
           <li key={index}>{point}</li>
         ))}
@@ -44,7 +44,7 @@ function ContactLink({ item }) {
 
 function SectionHeader ({ title }) {
   return(
-    <h2 className="mb-4 border-b-2 border-(--border-accent) pb-1 text-xl font-bold tracking-wide text-(--text-color)">
+    <h2 className="mb-4 border-b-2 border-(--border-accent) pb-1 text-xl font-bold tracking-wide text-(--text-color) break-after-avoid">
       {title}
     </h2>
   )
@@ -144,10 +144,10 @@ export default function CVPage({ searchParams }) {
             {filteredEducation.map((edu) => (
               <div key={edu.id}>
                 <h3 className="text-lg font-semibold text-(--text-color)">
-                  {edu.degree}
+                  {edu.school}
                 </h3>
                 <p className="text-md font-medium text-(--text-color-subtle)">
-                  {edu.school}
+                  {edu.degree}
                 </p>
                 <p className="text-sm text-(--text-color-muted)">{edu.dates}</p>
               </div>
